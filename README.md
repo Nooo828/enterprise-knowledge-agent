@@ -2,6 +2,8 @@
 
 本项目是等待选题的可运行基础骨架。尚未选择 Agent 框架，未实现业务工具或模型驱动 ReAct 循环，不是完整笔试提交答案。
 
+交付仓库：[Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，公开可读，默认分支 `main`。题号待确定；最终交付时同时提供题号与最终 commit SHA。
+
 ## 已准备内容
 
 - Python 独立虚拟环境 `.venv`（本机已实际创建）。
@@ -51,7 +53,7 @@ macOS/Linux 可在重新创建 venv 后使用 `.venv/bin/python` 替换上面的
 
 ## 评审入口
 
-- GitHub 上传环境与交付命令见 `docs/06-github-delivery.md`；当前仅配置本地仓库和登录，不创建远程仓库。
+- GitHub 上传环境、仓库命名与交付命令见 `docs/06-github-delivery.md`。
 - `examples/verification.json`：每条实际验证命令、退出码与记录文件。
 - `examples/pytest.txt`：测试实际输出。
 - `examples/dependency-versions.json`：解释器、隔离状态与直接依赖版本。

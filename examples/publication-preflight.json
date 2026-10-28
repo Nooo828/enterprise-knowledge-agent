@@ -1,0 +1,12 @@
+{
+  "repository": "Nooo828/xiaoying-ai-agent-campus-2027",
+  "visibility": "public",
+  "phase": "before_first_push",
+  "tracked_files_scanned": 31,
+  "history_blobs_scanned": 31,
+  "known_token_and_private_key_patterns_found": false,
+  "local_only_files_tracked": false,
+  "test_exit_code": 0,
+  "test_log": "publication-pytest.txt",
+  "note": "Pattern checks reduce accidental credential exposure; they do not prove absence of all sensitive data."
+}

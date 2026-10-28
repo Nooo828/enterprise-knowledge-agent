@@ -1,5 +1,11 @@
 # GitHub 交付环境
 
+## 仓库命名与公开范围
+
+交付仓库为 [Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，公开可读，默认分支 `main`。
+
+题目未强制仓库名，且允许公开或向评审开放读取权限的私有仓库。这里采用公开仓库，方便评审直接访问；名称包含公司、AI Agent、校招与2027届信息。具体题号尚未选定，名称暂不含题号。参考示例仓库仅用于理解结构，不作为实现达标依据。
+
 ## 本机配置
 
 2026-10-28 已建立独立 Git 仓库，默认分支为 main。Git 2.47.0.windows.2；GitHub CLI 2.103.3 来自 cli/cli 官方发布，已对照官方校验文件验证 SHA-256。
@@ -10,7 +16,7 @@ CLI 安装于项目 `.local-tools/gh/bin/gh.exe`；`scripts/gh.ps1` 负责调用
 
 本机为解决目录所有者检查，在 Git 全局 safe.directory 中仅信任此项目的确切路径；未设置通配信任。GitHub 凭据助手仅配置于本仓库。
 
-实际检查记录见 `examples/github-environment.json`。尚未创建远程仓库、设置 origin 或向 GitHub 推送代码。
+配置阶段的真实检查记录见 `examples/github-environment.json`，该历史快照记录创建远程仓库之前的状态。当前远程地址为 `https://github.com/Nooo828/xiaoying-ai-agent-campus-2027.git`；最终线上状态以仓库页面及 `git ls-remote origin main` 为准。
 
 ## 常用命令（项目根目录，PowerShell）
 
@@ -50,19 +56,19 @@ git diff --cached --stat
 git commit -m 'Complete selected AI Agent project'
 ```
 
-选定仓库名和公开范围后，下面示例可创建私有仓库并首次推送（将 YOUR_REPOSITORY 替换为实际仓库名）：
+本机已有 origin 配置，后续提交后上传：
 
 ```powershell
-.\scripts\gh.ps1 repo create Nooo828/YOUR_REPOSITORY --private --source . --remote origin --push
+git push origin main
 ```
 
-如果仓库已经存在，使用其实际 URL：
+在新电脑上直接克隆该仓库：
 
 ```powershell
-git remote add origin https://github.com/Nooo828/YOUR_REPOSITORY.git
-git push -u origin main
+git clone https://github.com/Nooo828/xiaoying-ai-agent-campus-2027.git
+cd xiaoying-ai-agent-campus-2027
 ```
 
-后续更新运行 `git push`。最终提交题号、GitHub URL 和 `git rev-parse HEAD` 的完整 SHA。私有仓库必须向题目指定的评审账号开放读取权限；该账号尚未提供。
+最终提交题号、上述 GitHub URL 和 `git rev-parse HEAD` 的完整 SHA。当前公开仓库无需额外邀请评审账号。具体题目、三类业务案例、全部验收点与真实模型驱动 ReAct 决策记录仍待后续实现。
 
 `.venv`、`.env`、本地工具与登录配置、Python 缓存均被排除；`.env.example` 可提交。压缩包不包含本地 Git 历史、虚拟环境或登录凭据，不能替代最终 GitHub 交付。
