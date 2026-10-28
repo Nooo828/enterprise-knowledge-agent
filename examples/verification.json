@@ -1,0 +1,106 @@
+{
+  "recorded_at_beijing": "2026-10-28T12:11:45.392800+08:00",
+  "environment": {
+    "python_version": "3.12.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "executable": "C:\\Users\\17739\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\xiaoying-agent-python\\.venv\\Scripts\\python.exe",
+    "venv_prefix": "C:\\Users\\17739\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\xiaoying-agent-python\\.venv",
+    "base_prefix": "D:\\anaconda3",
+    "isolated_venv": true,
+    "dependencies": {
+      "openai": "3.40.0",
+      "pydantic": "2.14.1",
+      "python-dotenv": "1.2.4",
+      "pytest": "9.2.0",
+      "rich": "15.0.0"
+    }
+  },
+  "checks": [
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "output_file": "pip-freeze.txt"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "output_file": "pip-check.txt"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "output_file": "smoke-default.json"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--message",
+        "环境已就绪"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "output_file": "smoke-custom.json"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--message",
+        "   "
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "passed": true,
+      "output_file": "smoke-invalid.txt"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "output_file": "pytest.txt"
+    }
+  ],
+  "all_passed": true
+}

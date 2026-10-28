@@ -1,0 +1,15 @@
+{
+  "python_version": "3.12.7",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "executable": "C:\\Users\\17739\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\xiaoying-agent-python\\.venv\\Scripts\\python.exe",
+  "venv_prefix": "C:\\Users\\17739\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\xiaoying-agent-python\\.venv",
+  "base_prefix": "D:\\anaconda3",
+  "isolated_venv": true,
+  "dependencies": {
+    "openai": "3.40.0",
+    "pydantic": "2.14.1",
+    "python-dotenv": "1.2.4",
+    "pytest": "9.2.0",
+    "rich": "15.0.0"
+  }
+}

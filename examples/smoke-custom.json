@@ -1,0 +1,6 @@
+{
+  "status": "ready",
+  "mode": "offline",
+  "message": "环境已就绪",
+  "stage": "environment_only"
+}
