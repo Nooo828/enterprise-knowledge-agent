@@ -4,7 +4,7 @@
 
 交付题目：**企业知识问答 Agent**（原题未提供数字题号）。公开仓库：[Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，默认分支 main。最终 SHA 通过 `git rev-parse HEAD` 获取。
 
-当前为本地交付版本；企业知识问答实现及本轮检查修复尚未同步到远程仓库，按用户要求暂缓上传。最终提交前需补齐平台题号、人工复核，并确认远程 SHA 与本地一致。
+企业知识问答实现及本地复查已完成，用户已授权同步至上述公开仓库。最终交付以远程 main 分支实际提交为准；提交前需补齐平台题号、人工复核，并核对 `git rev-parse HEAD` 与 `git ls-remote origin refs/heads/main` 的完整 SHA 一致。
 
 ## 评审先看这里
 

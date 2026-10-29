@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T16:46:06.898643+08:00",
+  "checked_at": "2026-10-29T17:12:17.469725+08:00",
   "network_calls": false,
   "live_evidence_policy": "Validate existing saved live records; no new live inference.",
   "required_files": {
@@ -215,9 +215,9 @@
   },
   "pending": [
     "数字题号未提供",
-    "候选人亲自复核与个人学习陈述",
-    "GitHub同步按用户要求暂缓"
+    "候选人亲自复核与个人学习陈述"
   ],
+  "github_verification": "Outside this offline audit; independently compare remote main with local HEAD.",
   "source_sha256": {
     "src\\__init__.py": "450ea8578acd2cbc0fb9aae554188f7cf607c47402c7a88bace2a7fffa21a573",
     "src\\xiaoying_agent\\agent.py": "30579a17c817426515dfd19fefeccb15a725b17082999317739b34d2799bb6b3",
