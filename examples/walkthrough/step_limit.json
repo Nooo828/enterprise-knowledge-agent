@@ -1,0 +1,79 @@
+{
+  "request": {
+    "question": "报销期限多久？",
+    "history": []
+  },
+  "result": {
+    "status": "incomplete",
+    "answer": "达到执行步数上限，任务未完成。",
+    "citations": [],
+    "gaps": [
+      "step_limit_reached"
+    ],
+    "clarification": ""
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索问题及历史中的主题。",
+        "query": "报销期限多久？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "报销期限多久？",
+        "offset": 0,
+        "total": 3,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 A",
+            "version_date": "2026-01-01",
+            "rule_key": "报销期限",
+            "score": 5.1284,
+            "preview": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D02",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 B",
+            "version_date": "2026-09-01",
+            "rule_key": "报销期限",
+            "score": 5.1284,
+            "preview": "报销申请须在费用发生后15天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "title": "费用报销材料指引",
+            "version_date": "2026-02-01",
+            "rule_key": "报销材料",
+            "score": 1.8326,
+            "preview": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          }
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "mode": "offline_mock",
+    "model": "deterministic-observation-policy-v1",
+    "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+    "max_steps": 1,
+    "model_calls": 1,
+    "tool_calls": 1,
+    "duration_seconds": 0.0,
+    "usage": {},
+    "discarded_parallel_calls": 0,
+    "mock_boundary": "仅验证流程，不证明真实模型决策效果。"
+  }
+}

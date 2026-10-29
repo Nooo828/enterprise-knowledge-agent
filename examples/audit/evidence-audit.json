@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T16:27:08.567573+08:00",
+  "checked_at": "2026-10-29T16:46:06.898643+08:00",
   "network_calls": false,
   "live_evidence_policy": "Validate existing saved live records; no new live inference.",
   "required_files": {
@@ -197,6 +197,7 @@
     }
   ],
   "links": {
+    "README.md -> docs/08-feature-walkthrough.md": true,
     "README.md -> docs/03-evaluation.md": true,
     "README.md -> examples/live/summary.json": true,
     "README.md -> examples/live/normal/output.json": true,

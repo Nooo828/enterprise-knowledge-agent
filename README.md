@@ -8,6 +8,7 @@
 
 ## 评审先看这里
 
+- [逐项需求核对与本地运行教程](docs/08-feature-walkthrough.md)：从启动到六类场景的可复制命令。
 - [验收结果与限制](docs/03-evaluation.md)：六项必验收场景及扩展检查。
 - [真实模型结果](examples/live/summary.json)：DeepSeek 的11组实际执行结果，全部通过本项目断言；不是离线决策日志。
 - [正常回答](examples/live/normal/output.json)、[冲突回答](examples/live/conflict/output.json)、[资料外问题](examples/live/outside/output.json)、[工具失败](examples/live/tool_failure/output.json)。每个目录含 input.json、corpus.json、output.json、trace.json。

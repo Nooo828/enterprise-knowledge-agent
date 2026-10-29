@@ -1,0 +1,157 @@
+{
+  "mode": "offline_mock",
+  "network_calls": false,
+  "checked_at": "2026-10-29T16:44:55.382724+08:00",
+  "cases": [
+    {
+      "case": "normal",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "报销期限多久？",
+        "--corpus",
+        "examples/live/normal/corpus.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "answered",
+      "passed": true
+    },
+    {
+      "case": "conflict",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "报销期限多久？"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "conflict",
+      "passed": true
+    },
+    {
+      "case": "outside",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "火星上有多少只独角兽？"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "not_found",
+      "passed": true
+    },
+    {
+      "case": "paraphrase",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "报账最晚能隔多长时间提交？",
+        "--corpus",
+        "examples/live/normal/corpus.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "answered",
+      "passed": true
+    },
+    {
+      "case": "context",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "那最晚什么时候交？",
+        "--history",
+        "data/history.json",
+        "--corpus",
+        "examples/live/normal/corpus.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "answered",
+      "passed": true
+    },
+    {
+      "case": "tool_failure",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "报销期限多久？",
+        "--fault",
+        "search_always"
+      ],
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "status": "tool_error",
+      "passed": true
+    },
+    {
+      "case": "step_limit",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "报销期限多久？",
+        "--max-steps",
+        "1"
+      ],
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "status": "incomplete",
+      "passed": true
+    },
+    {
+      "case": "mutation",
+      "python_arguments": [
+        "-X",
+        "utf8",
+        "-m",
+        "src.xiaoying_agent",
+        "--mode",
+        "offline_mock",
+        "--question",
+        "报销期限多久？",
+        "--corpus",
+        "examples/live/mutated/corpus.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "answered",
+      "passed": true
+    }
+  ]
+}
