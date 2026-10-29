@@ -12,7 +12,7 @@
 
 2026-10-28 已建立独立 Git 仓库，默认分支为 main。Git 2.47.0.windows.2；GitHub CLI 2.103.3 来自 cli/cli 官方发布，已对照官方校验文件验证 SHA-256。
 
-CLI 安装于项目 `.local-tools/gh/bin/gh.exe`；`scripts/gh.ps1` 负责调用，无需修改系统 PATH。登录配置在 `.local-tools/gh-config`，凭据由 CLI 使用系统凭据库保管；`.local-tools/` 整体被 Git 忽略。脚本不会要求将 token 写入仓库。
+CLI 安装于项目 `.local-tools/gh/bin/gh.exe`；`scripts/gh.ps1` 负责调用，无需修改系统 PATH。登录配置在 `.local-tools/gh-config`；CLI优先使用系统凭据库，不可用时会回退到本机明文配置，本次重新授权采用了该回退方式。`.local-tools/` 整体被 Git 忽略，也不包含在交付压缩包中；不得提交或分享该目录。脚本不会要求将token写入代码或受版本管理的文件。
 
 用户已在浏览器中完成授权，账号为 Nooo828（ID 75480697）。提交署名使用该账号及 GitHub noreply 邮箱，仅设置本仓库；如原先已有署名，配置脚本会保留。
 
