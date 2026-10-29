@@ -40,6 +40,6 @@
     "backend_file_created_at": "2026-10-29T18:02:17.543016+08:00",
     "verification_finished_at": "2026-10-29T18:13:49.220162+08:00",
     "elapsed_minutes_since_backend_file_creation": 11.53,
-    "note": "File timestamp boundary excludes initial planning and later GitHub upload; includes browser and model/API waiting. Not candidate manual coding time."
+    "note": "File timestamp boundary excludes initial planning and later GitHub upload; includes browser and model/API waiting. Not individual manual coding time."
   }
 }

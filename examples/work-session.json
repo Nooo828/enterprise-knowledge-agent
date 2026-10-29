@@ -4,9 +4,9 @@
   "elapsed_minutes_at_checkpoint": 60.02,
   "basis": "Tool UTC clock readings converted to Asia/Shanghai; includes interaction and API wait time.",
   "scope": "Enterprise QA implementation and verification; excludes Python/GitHub preparation on 2026-10-28.",
-  "candidate_manual_coding_time": "not recorded; no manual coding claim",
   "first_implementation_commit": "d21acf1fa062f94a0c377120ee1fc37f76f02006",
   "first_implementation_commit_at": "2026-10-29T15:45:11+08:00",
   "elapsed_minutes_to_first_implementation_commit": 62.9,
-  "time_boundary": "Includes initial implementation, interaction, API waits and local packaging; excludes later upload attempts and this audit. Individual manual coding time is unknown."
+  "time_boundary": "Includes initial implementation, interaction, API waits and local packaging; excludes later upload attempts and this audit. Individual manual coding time is unknown.",
+  "manual_coding_time": "not recorded; no manual coding claim"
 }

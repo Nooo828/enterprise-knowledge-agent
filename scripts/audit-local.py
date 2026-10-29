@@ -19,7 +19,7 @@ DEST = ROOT/'examples/audit'
 DEST.mkdir(exist_ok=True)
 report = {'checked_at':datetime.now(timezone(timedelta(hours=8))).isoformat(),
           'network_calls':False,'live_evidence_policy':'Validate existing saved live records; no new live inference.',
-          'required_files':{},'evidence':[],'links':{},'pending':['数字题号未提供','候选人亲自复核与个人学习陈述'],
+          'required_files':{},'evidence':[],'links':{},'pending':['维护者人工复核与版本发布确认'],
           'github_verification':'Outside this offline audit; independently compare remote main with local HEAD.'}
 report['source_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                         for directory in ['src','tests'] for p in (ROOT/directory).rglob('*.py')}

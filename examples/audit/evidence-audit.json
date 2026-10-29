@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T18:13:49.587662+08:00",
+  "checked_at": "2026-10-29T18:39:09.049435+08:00",
   "network_calls": false,
   "live_evidence_policy": "Validate existing saved live records; no new live inference.",
   "required_files": {
@@ -215,14 +215,13 @@
     "README.md -> examples/audit/evidence-audit.json": true
   },
   "pending": [
-    "数字题号未提供",
-    "候选人亲自复核与个人学习陈述"
+    "维护者人工复核与版本发布确认"
   ],
   "github_verification": "Outside this offline audit; independently compare remote main with local HEAD.",
   "source_sha256": {
     "src\\__init__.py": "450ea8578acd2cbc0fb9aae554188f7cf607c47402c7a88bace2a7fffa21a573",
     "src\\xiaoying_agent\\agent.py": "9da9da75fe85ec865077cee5013fb1cb7b1c7bbee2e4b17f24ecbdf1bf158403",
-    "src\\xiaoying_agent\\cli.py": "92e4e9f9c9505059706c44087e345c8ad13a25242a94c49c87de869fd9454767",
+    "src\\xiaoying_agent\\cli.py": "8e8b7dc5bab12a8dad91de7efa68b8d0aa9eb8fa9d94f70fde2534dcb956028d",
     "src\\xiaoying_agent\\evaluate.py": "334a8b82302ec26099262d65185dbbd0d8d0dda7516fa6dfa5d615c2497795dc",
     "src\\xiaoying_agent\\knowledge.py": "b8cf67050713756c85d50f6c95aace667975945f26915b3c41e672294b651958",
     "src\\xiaoying_agent\\providers.py": "6d9a557b8df577b2a9122ab1b0b3dee8cccf3959284639b890e17303bd57a402",

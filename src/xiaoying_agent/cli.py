@@ -28,7 +28,7 @@ def build_report(message: str) -> ReadinessReport:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="企业知识问答 Agent；--question 启动问答，未提供时运行环境冒烟检查")
-    parser.add_argument("--message", default="Hello, Xiaoying Agent!", help="非空冒烟输入")
+    parser.add_argument("--message", default="Hello, Knowledge Agent!", help="非空冒烟输入")
     parser.add_argument('--question', help='企业制度或产品问题')
     parser.add_argument('--history', type=Path, help='JSON 数组，每项为 role/content')
     parser.add_argument('--corpus', type=Path, default=PROJECT_ROOT/'data/knowledge.json')

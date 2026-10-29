@@ -1,10 +1,10 @@
-# 企业知识问答 Agent · 小影科技2027校招
+# 企业知识问答 Agent
 
 帮助员工查询合成制度和产品 FAQ。输出答案、文档 ID/版本日期/原文引用、资料缺口、追问和任务状态。
 
-交付题目：**企业知识问答 Agent**（原题未提供数字题号）。公开仓库：[Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，默认分支 main。最终 SHA 通过 `git rev-parse HEAD` 获取。
+项目名称：**企业知识问答 Agent**。公开仓库：[Nooo828/enterprise-knowledge-agent](https://github.com/Nooo828/enterprise-knowledge-agent)，默认分支 main。最终 SHA 通过 `git rev-parse HEAD` 获取。
 
-企业知识问答实现及本地复查已完成，用户已授权同步至上述公开仓库。最终交付以远程 main 分支实际提交为准；提交前需补齐平台题号、人工复核，并核对 `git rev-parse HEAD` 与 `git ls-remote origin refs/heads/main` 的完整 SHA 一致。
+企业知识问答实现及本地复查已完成。发布版本以远程 main 分支实际提交为准；发布前应完成人工复核，并核对 `git rev-parse HEAD` 与 `git ls-remote origin refs/heads/main` 的完整 SHA 一致。
 
 ## 评审先看这里
 

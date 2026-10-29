@@ -1,6 +1,6 @@
 # 调用流程与技术取舍
 
-采用 Python 原生有界循环，openai SDK 负责访问 DeepSeek 的兼容 Chat Completions 接口，Pydantic 负责输入、动作和资料契约，dotenv 读取本机配置。SDK版本 openai 3.40.0，模型请求名与服务返回名为 deepseek-flash。没有采用 Agent 框架，避免引入本题不必要的Runtime职责；依赖精确版本见 requirements.txt。
+采用 Python 原生有界循环，openai SDK 负责访问 DeepSeek 的兼容 Chat Completions 接口，Pydantic 负责输入、动作和资料契约，dotenv 读取本机配置。SDK版本 openai 3.40.0，模型请求名与服务返回名为 deepseek-flash。没有采用 Agent 框架，避免引入本项目不必要的Runtime职责；依赖精确版本见 requirements.txt。
 
 ```mermaid
 flowchart LR
