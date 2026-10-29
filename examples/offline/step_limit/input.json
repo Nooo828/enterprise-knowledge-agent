@@ -1,0 +1,8 @@
+{
+  "request": {
+    "question": "报销期限多久？",
+    "history": []
+  },
+  "fault": null,
+  "max_steps": 1
+}

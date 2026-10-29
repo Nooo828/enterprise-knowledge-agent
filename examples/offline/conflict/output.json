@@ -1,0 +1,28 @@
+{
+  "status": "conflict",
+  "answer": "资料存在冲突，无法确定唯一答案：\n[D01/deadline] 报销申请须在费用发生后30天内提交。\n[D02/deadline] 报销申请须在费用发生后15天内提交。\n[D05/materials] 报销需提交合法发票、费用明细和直属主管审批记录。",
+  "citations": [
+    {
+      "doc_id": "D01",
+      "chunk_id": "deadline",
+      "quote": "报销申请须在费用发生后30天内提交。",
+      "version_date": "2026-01-01"
+    },
+    {
+      "doc_id": "D02",
+      "chunk_id": "deadline",
+      "quote": "报销申请须在费用发生后15天内提交。",
+      "version_date": "2026-09-01"
+    },
+    {
+      "doc_id": "D05",
+      "chunk_id": "materials",
+      "quote": "报销需提交合法发票、费用明细和直属主管审批记录。",
+      "version_date": "2026-02-01"
+    }
+  ],
+  "gaps": [
+    "同一规则存在不同原文，未提供适用范围和优先级。"
+  ],
+  "clarification": "请确认应适用哪份制度，或补充其适用范围、优先级。"
+}

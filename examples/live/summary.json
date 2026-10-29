@@ -1,0 +1,164 @@
+{
+  "mode": "live",
+  "recorded_at": "2026-10-29T07:39:26.909081+00:00",
+  "cases": [
+    {
+      "id": "normal",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 5,
+      "mode": "live"
+    },
+    {
+      "id": "conflict",
+      "expected": "conflict",
+      "actual": "conflict",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true,
+        "both_conflict_documents": true,
+        "asks_applicability": true
+      },
+      "passed": true,
+      "steps": 4,
+      "mode": "live"
+    },
+    {
+      "id": "outside",
+      "expected": "not_found",
+      "actual": "not_found",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true,
+        "no_unfounded_citations": true
+      },
+      "passed": true,
+      "steps": 3,
+      "mode": "live"
+    },
+    {
+      "id": "paraphrase",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 5,
+      "mode": "live"
+    },
+    {
+      "id": "context",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 4,
+      "mode": "live"
+    },
+    {
+      "id": "tool_failure",
+      "expected": "tool_error",
+      "actual": "tool_error",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 5,
+      "mode": "live"
+    },
+    {
+      "id": "tool_recovery",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 4,
+      "mode": "live"
+    },
+    {
+      "id": "mutated",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true,
+        "no_stale_value": true
+      },
+      "passed": true,
+      "steps": 4,
+      "mode": "live"
+    },
+    {
+      "id": "resolved",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 4,
+      "mode": "live"
+    },
+    {
+      "id": "product",
+      "expected": "answered",
+      "actual": "answered",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 3,
+      "mode": "live"
+    },
+    {
+      "id": "step_limit",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 1,
+      "mode": "live"
+    }
+  ]
+}

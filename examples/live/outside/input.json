@@ -1,0 +1,8 @@
+{
+  "request": {
+    "question": "火星上有多少只独角兽？",
+    "history": []
+  },
+  "fault": null,
+  "max_steps": 12
+}

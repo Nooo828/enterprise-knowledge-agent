@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "corpus_sha256": "77ff341e289a39093b4bbfdb04eeae8f611e098b98766b36e2cc36596e2d4488",
+    "max_steps": 12,
+    "model_calls": 2,
+    "tool_calls": 1,
+    "duration_seconds": 2.953,
+    "usage": {
+      "prompt_tokens": 2310,
+      "completion_tokens": 258
+    },
+    "mock_boundary": null
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "需要检索报销期限相关制度原文。",
+        "query": "报销期限",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "报销期限",
+        "offset": 0,
+        "total": 2,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 A",
+            "version_date": "2026-01-01",
+            "rule_key": "报销期限",
+            "score": 5.7199,
+            "preview": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "title": "费用报销材料指引",
+            "version_date": "2026-02-01",
+            "rule_key": "报销材料",
+            "score": 1.9617,
+            "preview": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          }
+        ]
+      }
+    }
+  ]
+}

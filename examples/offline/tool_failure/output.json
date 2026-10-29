@@ -1,0 +1,9 @@
+{
+  "status": "tool_error",
+  "answer": "工具失败，任务未完成。",
+  "citations": [],
+  "gaps": [
+    "工具持续不可用，证据未能完整取得。"
+  ],
+  "clarification": ""
+}

@@ -1,0 +1,107 @@
+{
+  "mode": "live",
+  "recorded_at": "2026-10-29T07:22:18.912010+00:00",
+  "cases": [
+    {
+      "id": "normal",
+      "expected": "answered",
+      "actual": "incomplete",
+      "checks": {
+        "expected_status": false,
+        "expected_evidence": false,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": false,
+      "steps": 1,
+      "mode": "live"
+    },
+    {
+      "id": "conflict",
+      "expected": "conflict",
+      "actual": "incomplete",
+      "checks": {
+        "expected_status": false,
+        "expected_evidence": false,
+        "citations_exact": true,
+        "bounded": true,
+        "both_conflict_documents": false,
+        "asks_applicability": false
+      },
+      "passed": false,
+      "steps": 1,
+      "mode": "live"
+    },
+    {
+      "id": "outside",
+      "expected": "not_found",
+      "actual": "not_found",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true,
+        "no_unfounded_citations": true
+      },
+      "passed": true,
+      "steps": 4,
+      "mode": "live"
+    },
+    {
+      "id": "paraphrase",
+      "expected": "answered",
+      "actual": "incomplete",
+      "checks": {
+        "expected_status": false,
+        "expected_evidence": false,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": false,
+      "steps": 1,
+      "mode": "live"
+    },
+    {
+      "id": "context",
+      "expected": "answered",
+      "actual": "incomplete",
+      "checks": {
+        "expected_status": false,
+        "expected_evidence": false,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": false,
+      "steps": 1,
+      "mode": "live"
+    },
+    {
+      "id": "tool_failure",
+      "expected": "tool_error",
+      "actual": "tool_error",
+      "checks": {
+        "expected_status": true,
+        "expected_evidence": true,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": true,
+      "steps": 6,
+      "mode": "live"
+    },
+    {
+      "id": "tool_recovery",
+      "expected": "answered",
+      "actual": "incomplete",
+      "checks": {
+        "expected_status": false,
+        "expected_evidence": false,
+        "citations_exact": true,
+        "bounded": true
+      },
+      "passed": false,
+      "steps": 1,
+      "mode": "live"
+    }
+  ]
+}

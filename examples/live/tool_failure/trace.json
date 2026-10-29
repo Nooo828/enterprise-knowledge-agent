@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+    "max_steps": 12,
+    "model_calls": 5,
+    "tool_calls": 4,
+    "duration_seconds": 6.515,
+    "usage": {
+      "prompt_tokens": 6140,
+      "completion_tokens": 550
+    },
+    "discarded_parallel_calls": 0,
+    "mock_boundary": null
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索报销期限相关制度原文。",
+        "query": "报销期限",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "error": "Injected tool outage",
+        "retryable": true
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "search",
+        "reason": "检索因工具故障失败，按可重试提示重试一次报销期限检索。",
+        "query": "报销期限",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "error": "Injected tool outage",
+        "retryable": true
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "search",
+        "reason": "两次相同检索均报工具故障，改用更简短的关键词再尝试一次。",
+        "query": "报销 时限",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "error": "Injected tool outage",
+        "retryable": true
+      }
+    },
+    {
+      "step": 4,
+      "action": {
+        "action": "search",
+        "reason": "连续多次检索报销期限均报工具故障，再做一次简化关键词尝试以确认是否可恢复。",
+        "query": "费用报销 规定",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "error": "Injected tool outage",
+        "retryable": true
+      }
+    },
+    {
+      "step": 5,
+      "action": {
+        "action": "finish",
+        "reason": "多次检索（含重试与改写关键词）均返回工具故障，无法取得任何原文证据，按工具错误状态交付。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "tool_error",
+        "citations": [],
+        "gaps": [
+          "检索工具持续故障，未能取得报销期限相关制度原文",
+          "报销期限的具体天数、起算方式及适用例外均未核实"
+        ],
+        "clarification": "检索服务当前不可用，暂无法回答报销期限；请稍后重试，或提供制度名称/文档编号以便恢复后定点读取。"
+      },
+      "observation": {
+        "accepted": true,
+        "status": "tool_error"
+      }
+    }
+  ]
+}

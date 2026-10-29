@@ -4,7 +4,7 @@
 
 交付仓库为 [Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，公开可读，默认分支 `main`。
 
-题目未强制仓库名，且允许公开或向评审开放读取权限的私有仓库。这里采用公开仓库，方便评审直接访问；名称包含公司、AI Agent、校招与2027届信息。具体题号尚未选定，名称暂不含题号。参考示例仓库仅用于理解结构，不作为实现达标依据。
+题目未强制仓库名，且允许公开或向评审开放读取权限的私有仓库。这里采用公开仓库，方便评审直接访问；名称包含公司、AI Agent、校招与2027届信息。已选择企业知识问答 Agent，原题未提供数字编号，名称保留不含题号。参考示例仓库仅用于理解结构，不作为实现达标依据。
 
 ## 本机配置
 
@@ -44,7 +44,7 @@ git init -b main
 
 ## 选题完成后的上传与交付
 
-当前项目已有基础环境代码。后续每次提交前运行：
+当前项目已有企业知识问答实现和真实模型验证材料。后续每次提交前运行：
 
 ```powershell
 .\.venv\Scripts\python.exe -X utf8 -m pytest -q
@@ -69,6 +69,6 @@ git clone https://github.com/Nooo828/xiaoying-ai-agent-campus-2027.git
 cd xiaoying-ai-agent-campus-2027
 ```
 
-最终提交题号、上述 GitHub URL 和 `git rev-parse HEAD` 的完整 SHA。当前公开仓库无需额外邀请评审账号。具体题目、三类业务案例、全部验收点与真实模型驱动 ReAct 决策记录仍待后续实现。
+最终提交题目“企业知识问答 Agent”（数字题号需从考试平台补齐）、上述 GitHub URL 和 `git rev-parse HEAD` 的完整 SHA。当前公开仓库无需额外邀请评审账号。六项必验收、三类业务案例及真实模型决策记录见 docs/03-evaluation.md。
 
 `.venv`、`.env`、本地工具与登录配置、Python 缓存均被排除；`.env.example` 可提交。压缩包不包含本地 Git 历史、虚拟环境或登录凭据，不能替代最终 GitHub 交付。

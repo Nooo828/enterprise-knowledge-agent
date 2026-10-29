@@ -1,0 +1,86 @@
+{
+  "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+  "cases": [
+    {
+      "query": "报销期限",
+      "expected_doc_ids": [
+        "D01",
+        "D02"
+      ],
+      "baseline_bigrams": {
+        "retrieved": [
+          "D01",
+          "D02",
+          "D05"
+        ],
+        "recall_at_5": 1.0
+      },
+      "synonym_rule_group": {
+        "retrieved": [
+          "D01",
+          "D02",
+          "D05"
+        ],
+        "recall_at_5": 1.0
+      }
+    },
+    {
+      "query": "报账时限",
+      "expected_doc_ids": [
+        "D01",
+        "D02"
+      ],
+      "baseline_bigrams": {
+        "retrieved": [],
+        "recall_at_5": 0.0
+      },
+      "synonym_rule_group": {
+        "retrieved": [
+          "D01",
+          "D02",
+          "D05"
+        ],
+        "recall_at_5": 1.0
+      }
+    },
+    {
+      "query": "居家上班",
+      "expected_doc_ids": [
+        "D06"
+      ],
+      "baseline_bigrams": {
+        "retrieved": [],
+        "recall_at_5": 0.0
+      },
+      "synonym_rule_group": {
+        "retrieved": [
+          "D06"
+        ],
+        "recall_at_5": 1.0
+      }
+    },
+    {
+      "query": "输出格式",
+      "expected_doc_ids": [
+        "D04"
+      ],
+      "baseline_bigrams": {
+        "retrieved": [
+          "D04"
+        ],
+        "recall_at_5": 1.0
+      },
+      "synonym_rule_group": {
+        "retrieved": [
+          "D04"
+        ],
+        "recall_at_5": 1.0
+      }
+    }
+  ],
+  "macro_recall_at_5": {
+    "baseline_bigrams": 0.5,
+    "synonym_rule_group": 1.0
+  },
+  "limitation": "四条人工合成查询的小样本回归，不代表通用语义检索质量。"
+}

@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "mode": "offline_mock",
+    "model": "deterministic-observation-policy-v1",
+    "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+    "max_steps": 12,
+    "model_calls": 3,
+    "tool_calls": 2,
+    "duration_seconds": 0.0,
+    "usage": {},
+    "mock_boundary": "仅验证流程，不证明真实模型决策效果。"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索问题及历史中的主题。",
+        "query": "火星上有多少只独角兽？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "火星上有多少只独角兽？",
+        "offset": 0,
+        "total": 0,
+        "next_offset": null,
+        "hits": []
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "search",
+        "reason": "首次未命中，改写关键词补充检索。",
+        "query": "火星上有多少只独角兽？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "火星上有多少只独角兽？",
+        "offset": 0,
+        "total": 0,
+        "next_offset": null,
+        "hits": []
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "finish",
+        "reason": "两次检索均无证据，不推测答案。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "not_found",
+        "citations": [],
+        "gaps": [
+          "现有知识库未找到相关制度或产品资料。"
+        ],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "not_found"
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "corpus_sha256": "dba7efde5ed4c27b49b6986e7b0fa78ed122d12bd864bc6371bcc1fef40ed943",
+    "max_steps": 12,
+    "model_calls": 4,
+    "tool_calls": 3,
+    "duration_seconds": 4.859,
+    "usage": {
+      "prompt_tokens": 5543,
+      "completion_tokens": 525
+    },
+    "discarded_parallel_calls": 1,
+    "mock_boundary": null
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "问题涉及报销期限，需检索相关制度条款。",
+        "query": "报销期限",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "报销期限",
+        "offset": 0,
+        "total": 3,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 A",
+            "version_date": "2026-01-01",
+            "rule_key": "报销期限",
+            "score": 5.1284,
+            "preview": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D02",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 B",
+            "version_date": "2026-09-01",
+            "rule_key": "报销期限",
+            "score": 5.1284,
+            "preview": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "title": "费用报销材料指引",
+            "version_date": "2026-02-01",
+            "rule_key": "报销材料",
+            "score": 1.8326,
+            "preview": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "read",
+        "reason": "需读取两版报销期限原文以确认内容是否一致。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D01",
+        "chunk_id": "deadline",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D01",
+        "title": "费用报销制度 A",
+        "version_date": "2026-01-01",
+        "chunk_id": "deadline",
+        "rule_key": "报销期限",
+        "text": "报销申请须在费用发生后30天内提交。"
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "read",
+        "reason": "需读取 D02 报销期限原文，与 D01 比对是否一致。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D02",
+        "chunk_id": "deadline",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D02",
+        "title": "费用报销制度 B",
+        "version_date": "2026-09-01",
+        "chunk_id": "deadline",
+        "rule_key": "报销期限",
+        "text": "报销申请须在费用发生后30天内提交。"
+      }
+    },
+    {
+      "step": 4,
+      "action": {
+        "action": "finish",
+        "reason": "两份制度中同一规则键的原文一致，报销期限为30天，资料充分且无冲突。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "quote": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D02",
+            "chunk_id": "deadline",
+            "quote": "报销申请须在费用发生后30天内提交。"
+          }
+        ],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "answered"
+      }
+    }
+  ]
+}

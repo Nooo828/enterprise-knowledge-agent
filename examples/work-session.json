@@ -1,0 +1,8 @@
+{
+  "implementation_started_at": "2026-10-29T14:42:17+08:00",
+  "checkpoint_at": "2026-10-29T15:42:18+08:00",
+  "elapsed_minutes_at_checkpoint": 60.02,
+  "basis": "Tool UTC clock readings converted to Asia/Shanghai; includes interaction and API wait time.",
+  "scope": "Enterprise QA implementation and verification; excludes Python/GitHub preparation on 2026-10-28.",
+  "candidate_manual_coding_time": "not recorded; no manual coding claim"
+}

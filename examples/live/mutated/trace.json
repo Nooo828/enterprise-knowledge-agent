@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "corpus_sha256": "94a2ee2b81de9f6e3dc9134f49f554f3e0963c34bc3d9d0650047790ee10ed6d",
+    "max_steps": 12,
+    "model_calls": 4,
+    "tool_calls": 3,
+    "duration_seconds": 5.0,
+    "usage": {
+      "prompt_tokens": 5587,
+      "completion_tokens": 511
+    },
+    "discarded_parallel_calls": 1,
+    "mock_boundary": null
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索报销期限相关制度原文。",
+        "query": "报销期限",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "报销期限",
+        "offset": 0,
+        "total": 2,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 A",
+            "version_date": "2026-10-29",
+            "rule_key": "报销期限",
+            "score": 5.7199,
+            "preview": "报销申请须在费用发生后45天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "title": "费用报销材料指引",
+            "version_date": "2026-02-01",
+            "rule_key": "报销材料",
+            "score": 1.9617,
+            "preview": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "read",
+        "reason": "检索命中报销期限条款，需读取原文核实。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D01",
+        "chunk_id": "deadline",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D01",
+        "title": "费用报销制度 A",
+        "version_date": "2026-10-29",
+        "chunk_id": "deadline",
+        "rule_key": "报销期限",
+        "text": "报销申请须在费用发生后45天内提交。"
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "search",
+        "reason": "仅命中一份制度，需补检是否还有其他版本或报销时限规定以确认是否存在冲突。",
+        "query": "报销 提交时限 天数",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "报销 提交时限 天数",
+        "offset": 0,
+        "total": 4,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 A",
+            "version_date": "2026-10-29",
+            "rule_key": "报销期限",
+            "score": 5.448,
+            "preview": "报销申请须在费用发生后45天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "title": "费用报销材料指引",
+            "version_date": "2026-02-01",
+            "rule_key": "报销材料",
+            "score": 2.9425,
+            "preview": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          },
+          {
+            "doc_id": "D03",
+            "chunk_id": "days",
+            "title": "年假制度",
+            "version_date": "2026-01-01",
+            "rule_key": "年假天数",
+            "score": 0.9808,
+            "preview": "连续工作满1年的员工，每个自然年度享有5天带薪年"
+          },
+          {
+            "doc_id": "D06",
+            "chunk_id": "days",
+            "title": "远程办公规则",
+            "version_date": "2026-03-01",
+            "rule_key": "远程办公天数",
+            "score": 0.9808,
+            "preview": "每周最多2天远程办公，需提前取得直属主管审批。"
+          }
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "action": {
+        "action": "finish",
+        "reason": "两次检索与原文读取均显示报销期限唯一规定为45天，无其他版本或冲突条款。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "quote": "报销申请须在费用发生后45天内提交。"
+          }
+        ],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "answered"
+      }
+    }
+  ]
+}

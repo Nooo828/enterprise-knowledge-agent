@@ -1,64 +1,57 @@
-# 小影科技2027校招 AI Agent · Python 基础环境
+# 企业知识问答 Agent · 小影科技2027校招
 
-本项目是等待选题的可运行基础骨架。尚未选择 Agent 框架，未实现业务工具或模型驱动 ReAct 循环，不是完整笔试提交答案。
+帮助员工查询合成制度和产品 FAQ。输出答案、文档 ID/版本日期/原文引用、资料缺口、追问和任务状态。
 
-交付仓库：[Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，公开可读，默认分支 `main`。题号待确定；最终交付时同时提供题号与最终 commit SHA。
+交付题目：**企业知识问答 Agent**（原题未提供数字题号）。公开仓库：[Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，默认分支 main。最终 SHA 通过 `git rev-parse HEAD` 获取。
 
-## 已准备内容
+## 评审先看这里
 
-- Python 独立虚拟环境 `.venv`（本机已实际创建）。
-- openai、pydantic、python-dotenv、pytest、rich。
-- src/、tests/、examples/、data/、docs/。
-- 离线 CLI、输入校验、冒烟测试、真实验证日志。
-- requirements.in（直接依赖）、requirements.txt（当前安装版本锁定）、.env.example、.gitignore。
+- [验收结果与限制](docs/03-evaluation.md)：六项必验收场景及扩展检查。
+- [真实模型结果](examples/live/summary.json)：DeepSeek 的11组实际执行结果，全部通过本项目断言；不是离线决策日志。
+- [正常回答](examples/live/normal/output.json)、[冲突回答](examples/live/conflict/output.json)、[资料外问题](examples/live/outside/output.json)、[工具失败](examples/live/tool_failure/output.json)。每个目录含 input.json、corpus.json、output.json、trace.json。
+- [真实冲突 Trace](examples/live/conflict/trace.json)：模型检索、读取双方原文后选择 conflict 并追问；不以版本日期决定优先级。
+- [改文档测试](examples/live/mutated/output.json)：D01 从30天改为45天，答案随之改变。[冲突消除](examples/live/resolved/output.json)：两份同规则原文一致后可回答。
+- [测试日志](examples/tests-final.txt)：36 passed；[检索改进对比](examples/retrieval-evaluation.json)。
 
-## 本机直接运行（PowerShell）
+## 安装与运行
 
-先进入此 README 所在目录，然后执行以下命令，无需激活虚拟环境：
+本机实测 Windows / Python 3.12.7。项目使用 Python 原生执行循环，不依赖 Agent 框架。依赖及精确版本见 requirements.txt，直接依赖见 requirements.in。
 
-```powershell
-.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent
-.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent --message '环境已就绪'
-.\.venv\Scripts\python.exe -X utf8 -m pytest -q
-.\.venv\Scripts\python.exe -m pip check
-```
-
-默认输出为 JSON：
-
-```json
-{
-  "status": "ready",
-  "mode": "offline",
-  "message": "Hello, Xiaoying Agent!",
-  "stage": "environment_only"
-}
-```
-
-空白 `--message` 返回错误和退出码 2。当前所有路径均不调用模型或网络；无需 `.env`。
-
-## 新电脑安装
-
-本机验证环境为 Windows / Python 3.12.7；建议使用 Python 3.12。`.venv` 与机器路径绑定，不要将其复制到其他位置使用或上传到 GitHub。
+在项目根目录执行（PowerShell；不要求激活脚本）：
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent
-.\.venv\Scripts\python.exe -X utf8 -m pytest -q
+.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent --mode offline_mock --question '报销期限多久？'
+.\.venv\Scripts\python.exe -X utf8 -m pytest -q -p no:cacheprovider
 ```
 
-macOS/Linux 可在重新创建 venv 后使用 `.venv/bin/python` 替换上面的解释器路径；当前只在 Windows 实测。
+本机已有 .venv，无需重复创建。macOS/Linux 将解释器路径替换为 `.venv/bin/python`，当前仅在 Windows 实测。
 
-后续需要模型时，可将 `.env.example` 复制为 `.env` 并配置；当前不会读取其中的模型参数发起请求。禁止提交真实密钥或隐私数据。
+真实模型：复制 .env.example 为 .env，填入自己的 OPENAI_API_KEY。默认官方 DeepSeek 地址为 `https://api.deepseek.com`，模型为 `deepseek-flash`；也可修改为支持函数调用的 OpenAI 兼容服务。API 使用产生服务商费用，ChatGPT 登录不能替代该配置。
 
-## 评审入口
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent --mode live --question '报销期限多久？' --output examples/manual-run.json
+.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent --mode live --question '那最晚什么时候交？' --history data/history.json --corpus examples/live/normal/corpus.json
+```
 
-- GitHub 上传环境、仓库命名与交付命令见 `docs/06-github-delivery.md`。
-- `examples/verification.json`：每条实际验证命令、退出码与记录文件。
-- `examples/pytest.txt`：测试实际输出。
-- `examples/dependency-versions.json`：解释器、隔离状态与直接依赖版本。
-- `docs/01-requirements.md` 至 `docs/05-retrospective.md`：当前范围、设计、验证、AI 使用与后续计划。
+默认知识库有30天/15天的刻意冲突。如需单一制度回答，指定 `--corpus examples/live/normal/corpus.json`。CLI 退出码：0=正常交付（包括冲突、追问和资料外结果），2=输入/配置错误，3=工具/模型错误或步数耗尽。结果中的 status 才表示业务状态。
 
-## 选题后仍需完成
+## 复现验证材料
 
-明确题号和业务验收点，实现至少一个真实模型选择动作、执行工具、观察结果并决定下一步或结束的循环，设置执行上限；保存至少两条不同动态决策路径，并补齐正常、资料不足、工具失败三类业务案例。当前入口与测试不作为上述能力的证明。
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent.evaluate --mode offline_mock --out examples/offline
+.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent.evaluate --mode live --out examples/live
+.\.venv\Scripts\python.exe -X utf8 scripts/retrieval-eval.py
+.\.venv\Scripts\python.exe -m pip check
+```
+
+可通过 `--case conflict --case normal` 仅重跑指定用例。故障注入如 `--fault search_always`；`--max-steps 1` 验证上限。live 不会自动回退 Mock；离线模式显式标记 offline_mock，只证明流程，不证明模型决策质量。
+
+## 设计与范围
+
+每一轮由模型选择 search/read/finish，执行工具后将真实结果交回模型，最多12轮（可设1..30）。搜索使用中文双字、同义词和同规则版本合并；读取工具返回完整原子片段。模型选择引用，执行层核对引用确为本轮读过的完整原文，并生成抽取式答案，降低自由改写引入无依据结论的风险。
+
+每份资料带文档ID、版本日期、rule_key和片段ID。rule_key 是合成知识库人工维护的规则分组，不包含答案或优先级。任何同组原文差异都保守视作潜在冲突；这不是通用语义冲突检测器。详见 docs/02-solution.md。
+
+目录包含 src/、tests/、examples/、data/ 和 docs/01..05。旧的环境初始化记录保留作历史，当前验收以 examples/live/、examples/offline/ 和 tests-final.txt 为准。真实密钥仅放本机 .env，该文件、虚拟环境及登录配置均被 Git 忽略。

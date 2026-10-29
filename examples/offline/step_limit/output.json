@@ -1,0 +1,9 @@
+{
+  "status": "incomplete",
+  "answer": "达到执行步数上限，任务未完成。",
+  "citations": [],
+  "gaps": [
+    "step_limit_reached"
+  ],
+  "clarification": ""
+}

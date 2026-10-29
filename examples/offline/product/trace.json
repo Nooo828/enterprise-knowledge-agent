@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "mode": "offline_mock",
+    "model": "deterministic-observation-policy-v1",
+    "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+    "max_steps": 12,
+    "model_calls": 3,
+    "tool_calls": 2,
+    "duration_seconds": 0.0,
+    "usage": {},
+    "mock_boundary": "仅验证流程，不证明真实模型决策效果。"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索问题及历史中的主题。",
+        "query": "CloudNote 支持什么导出格式？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "CloudNote 支持什么导出格式？",
+        "offset": 0,
+        "total": 1,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D04",
+            "chunk_id": "export",
+            "title": "CloudNote 产品 FAQ",
+            "version_date": "2026-08-15",
+            "rule_key": "CloudNote导出格式",
+            "score": 9.7041,
+            "preview": "CloudNote 支持将笔记导出为 PDF 和"
+          }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "read",
+        "reason": "读取命中原文，核查答案与潜在冲突。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D04",
+        "chunk_id": "export",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D04",
+        "title": "CloudNote 产品 FAQ",
+        "version_date": "2026-08-15",
+        "chunk_id": "export",
+        "rule_key": "CloudNote导出格式",
+        "text": "CloudNote 支持将笔记导出为 PDF 和 Markdown 文件。"
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "finish",
+        "reason": "已读取证据且未发现同规则差异。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "D04",
+            "chunk_id": "export",
+            "quote": "CloudNote 支持将笔记导出为 PDF 和 Markdown 文件。"
+          }
+        ],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "answered"
+      }
+    }
+  ]
+}

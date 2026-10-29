@@ -1,0 +1,8 @@
+{
+  "request": {
+    "question": "CloudNote 支持什么导出格式？",
+    "history": []
+  },
+  "fault": null,
+  "max_steps": 12
+}

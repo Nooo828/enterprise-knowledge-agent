@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "mode": "offline_mock",
+    "model": "deterministic-observation-policy-v1",
+    "corpus_sha256": "77ff341e289a39093b4bbfdb04eeae8f611e098b98766b36e2cc36596e2d4488",
+    "max_steps": 12,
+    "model_calls": 5,
+    "tool_calls": 4,
+    "duration_seconds": 0.0,
+    "usage": {},
+    "mock_boundary": "仅验证流程，不证明真实模型决策效果。"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索问题及历史中的主题。",
+        "query": "我想了解报销制度 那最晚什么时候交？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "我想了解报销制度 那最晚什么时候交？",
+        "offset": 0,
+        "total": 3,
+        "next_offset": null,
+        "hits": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "title": "费用报销制度 A",
+            "version_date": "2026-01-01",
+            "rule_key": "报销期限",
+            "score": 6.7008,
+            "preview": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "title": "费用报销材料指引",
+            "version_date": "2026-02-01",
+            "rule_key": "报销材料",
+            "score": 1.9617,
+            "preview": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          },
+          {
+            "doc_id": "D03",
+            "chunk_id": "days",
+            "title": "年假制度",
+            "version_date": "2026-01-01",
+            "rule_key": "年假天数",
+            "score": 0.9808,
+            "preview": "连续工作满1年的员工，每个自然年度享有5天带薪年"
+          }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "read",
+        "reason": "读取命中原文，核查答案与潜在冲突。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D01",
+        "chunk_id": "deadline",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D01",
+        "title": "费用报销制度 A",
+        "version_date": "2026-01-01",
+        "chunk_id": "deadline",
+        "rule_key": "报销期限",
+        "text": "报销申请须在费用发生后30天内提交。"
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "read",
+        "reason": "读取命中原文，核查答案与潜在冲突。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D05",
+        "chunk_id": "materials",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D05",
+        "title": "费用报销材料指引",
+        "version_date": "2026-02-01",
+        "chunk_id": "materials",
+        "rule_key": "报销材料",
+        "text": "报销需提交合法发票、费用明细和直属主管审批记录。"
+      }
+    },
+    {
+      "step": 4,
+      "action": {
+        "action": "read",
+        "reason": "读取命中原文，核查答案与潜在冲突。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "D03",
+        "chunk_id": "days",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "doc_id": "D03",
+        "title": "年假制度",
+        "version_date": "2026-01-01",
+        "chunk_id": "days",
+        "rule_key": "年假天数",
+        "text": "连续工作满1年的员工，每个自然年度享有5天带薪年假。"
+      }
+    },
+    {
+      "step": 5,
+      "action": {
+        "action": "finish",
+        "reason": "已读取证据且未发现同规则差异。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "answered",
+        "citations": [
+          {
+            "doc_id": "D01",
+            "chunk_id": "deadline",
+            "quote": "报销申请须在费用发生后30天内提交。"
+          },
+          {
+            "doc_id": "D05",
+            "chunk_id": "materials",
+            "quote": "报销需提交合法发票、费用明细和直属主管审批记录。"
+          },
+          {
+            "doc_id": "D03",
+            "chunk_id": "days",
+            "quote": "连续工作满1年的员工，每个自然年度享有5天带薪年假。"
+          }
+        ],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "answered"
+      }
+    }
+  ]
+}

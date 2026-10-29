@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+    "max_steps": 12,
+    "model_calls": 3,
+    "tool_calls": 2,
+    "duration_seconds": 3.656,
+    "usage": {
+      "prompt_tokens": 3456,
+      "completion_tokens": 320
+    },
+    "discarded_parallel_calls": 0,
+    "mock_boundary": null
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索企业知识库中是否有关于火星独角兽数量的资料。",
+        "query": "火星 独角兽 数量",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "火星 独角兽 数量",
+        "offset": 0,
+        "total": 0,
+        "next_offset": null,
+        "hits": []
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "search",
+        "reason": "首轮检索无命中，改用更宽泛的关键词补检知识库是否存在相关内容。",
+        "query": "独角兽",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "query": "独角兽",
+        "offset": 0,
+        "total": 0,
+        "next_offset": null,
+        "hits": []
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "finish",
+        "reason": "两次检索（含放宽关键词）均无命中，知识库中没有该问题相关资料。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "not_found",
+        "citations": [],
+        "gaps": [
+          "知识库中检索不到任何关于火星或独角兽的资料，无法给出数量。",
+          "若问题涉及某类业务指标的比喻说法（如“独角兽企业”），请说明具体口径。"
+        ],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "not_found"
+      }
+    }
+  ]
+}

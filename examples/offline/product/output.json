@@ -1,0 +1,14 @@
+{
+  "status": "answered",
+  "answer": "根据已读取的资料：\n[D04/export] CloudNote 支持将笔记导出为 PDF 和 Markdown 文件。",
+  "citations": [
+    {
+      "doc_id": "D04",
+      "chunk_id": "export",
+      "quote": "CloudNote 支持将笔记导出为 PDF 和 Markdown 文件。",
+      "version_date": "2026-08-15"
+    }
+  ],
+  "gaps": [],
+  "clarification": ""
+}

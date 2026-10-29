@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "mode": "offline_mock",
+    "model": "deterministic-observation-policy-v1",
+    "corpus_sha256": "61fd60b1b99374db1162514b09bf3e9417a73d470ff18495ccbcc19078d46981",
+    "max_steps": 12,
+    "model_calls": 3,
+    "tool_calls": 2,
+    "duration_seconds": 0.0,
+    "usage": {},
+    "mock_boundary": "仅验证流程，不证明真实模型决策效果。"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": {
+        "action": "search",
+        "reason": "检索问题及历史中的主题。",
+        "query": "报销期限多久？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "error": "Injected tool outage",
+        "retryable": true
+      }
+    },
+    {
+      "step": 2,
+      "action": {
+        "action": "search",
+        "reason": "检索问题及历史中的主题。",
+        "query": "报销期限多久？",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "incomplete",
+        "citations": [],
+        "gaps": [],
+        "clarification": ""
+      },
+      "observation": {
+        "error": "Injected tool outage",
+        "retryable": true
+      }
+    },
+    {
+      "step": 3,
+      "action": {
+        "action": "finish",
+        "reason": "两次工具失败，停止并报告未完成。",
+        "query": "",
+        "offset": 0,
+        "doc_id": "",
+        "chunk_id": "",
+        "status": "tool_error",
+        "citations": [],
+        "gaps": [
+          "工具持续不可用，证据未能完整取得。"
+        ],
+        "clarification": ""
+      },
+      "observation": {
+        "accepted": true,
+        "status": "tool_error"
+      }
+    }
+  ]
+}
