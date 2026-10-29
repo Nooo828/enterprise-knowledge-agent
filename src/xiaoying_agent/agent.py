@@ -62,21 +62,37 @@ class Agent:
         return dict(status=action.status, answer=answer.strip(), citations=citations,
                     gaps=action.gaps, clarification=action.clarification)
 
-    def run(self, request):
+    def run(self, request, on_event=None, should_stop=None):
         request = Request.model_validate(request)
         started = time.monotonic()
         observations, result = [], None
         model_calls, tool_calls = 0, 0
+        def emit(kind, payload):
+            if on_event is not None:
+                try:
+                    from copy import deepcopy
+                    on_event(dict(kind=kind, elapsed_seconds=round(time.monotonic()-started,3),
+                                  payload=deepcopy(payload)))
+                except Exception:
+                    # A UI observer must not alter execution or fabricate evidence.
+                    pass
         for step in range(1, self.max_steps+1):
+            if should_stop is not None and should_stop():
+                result = dict(status='incomplete',answer='用户停止运行，任务未完成。',citations=[],
+                              gaps=['user_cancelled'],clarification='')
+                emit('cancelled',dict(step=step))
+                break
             state = dict(request=request.model_dump(), observations=observations,
                          remaining_steps=self.max_steps-step+1)
             model_calls += 1
+            emit('model_start',dict(step=step,remaining_steps=self.max_steps-step+1))
             try:
                 action = Action.model_validate(self.provider.decide(state))
             except Exception as exc:
                 # Never persist raw SDK exception bodies, headers, credentials or reasoning.
                 result = dict(status='incomplete', answer='模型调用或动作解析失败，任务未完成。',
                               citations=[], gaps=[f'ModelError:{type(exc).__name__}'], clarification='')
+                emit('model_error',dict(step=step,error_type=type(exc).__name__))
                 break
             try:
                 if action.action=='finish':
@@ -100,11 +116,13 @@ class Agent:
                     error = f'ToolError:{type(exc).__name__}'
                 observation = dict(error=error, retryable=action.action!='finish')
             observations.append(dict(step=step, action=action.model_dump(), observation=observation))
+            emit('step',observations[-1])
             if result is not None:
                 break
         if result is None:
             result = dict(status='incomplete', answer='达到执行步数上限，任务未完成。', citations=[],
                           gaps=['step_limit_reached'], clarification='')
+        emit('completed',dict(status=result['status'],model_calls=model_calls,tool_calls=tool_calls))
         return dict(request=request.model_dump(), result=result, trace=observations,
                     meta=dict(mode=self.provider.mode, model=self.provider.name,
                         corpus_sha256=self.kb.digest, max_steps=self.max_steps,

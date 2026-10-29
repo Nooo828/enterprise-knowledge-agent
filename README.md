@@ -8,16 +8,25 @@
 
 ## 评审先看这里
 
+- [可视化操作界面](docs/09-web-interface.md)：问答、资料编辑、实时步骤日志、历史恢复、停止和记录下载。
 - [逐项需求核对与本地运行教程](docs/08-feature-walkthrough.md)：从启动到六类场景的可复制命令。
 - [验收结果与限制](docs/03-evaluation.md)：六项必验收场景及扩展检查。
 - [真实模型结果](examples/live/summary.json)：DeepSeek 的11组实际执行结果，全部通过本项目断言；不是离线决策日志。
 - [正常回答](examples/live/normal/output.json)、[冲突回答](examples/live/conflict/output.json)、[资料外问题](examples/live/outside/output.json)、[工具失败](examples/live/tool_failure/output.json)。每个目录含 input.json、corpus.json、output.json、trace.json。
 - [真实冲突 Trace](examples/live/conflict/trace.json)：模型检索、读取双方原文后选择 conflict 并追问；不以版本日期决定优先级。
 - [改文档测试](examples/live/mutated/output.json)：D01 从30天改为45天，答案随之改变。[冲突消除](examples/live/resolved/output.json)：两份同规则原文一致后可回答。
-- [测试日志](examples/tests-final.txt)：42 passed；[检索改进对比](examples/retrieval-evaluation.json)。
+- [测试日志](examples/tests-final.txt)：66 passed（含网页相关测试）；[检索改进对比](examples/retrieval-evaluation.json)。
 - [本地合规核对表](docs/07-local-audit.md)、[真实决策路径摘录](examples/audit/decision-paths.md)、[22组材料自动复核](examples/audit/evidence-audit.json)。
 
 ## 安装与运行
+
+本机可直接启动可视化界面：
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent.web
+```
+
+然后浏览器打开 `http://127.0.0.1:8765`，默认离线演示；真实模型使用现有 `.env`。Windows也可双击 `start-web.cmd` 启动。无需Node.js或构建命令。下面的CLI方式仍可独立运行。
 
 本机实测 Windows / Python 3.12.7。项目使用 Python 原生执行循环，不依赖 Agent 框架。依赖及精确版本见 requirements.txt，直接依赖见 requirements.in。
 

@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-29T18:12:48.510788+08:00",
+  "pytest_passed": 66,
+  "browser_run_count": 5,
+  "browser_live_runs": 2,
+  "manual_browser_checks": {
+    "offline_conflict": true,
+    "edited_document_60_days_offline": true,
+    "edited_document_60_days_live": true,
+    "live_conflict_with_both_quotes": true,
+    "live_incremental_model_start_and_step_events": true,
+    "tool_error_filter": true,
+    "history_restores_inputs_and_logs": true,
+    "downloaded_json_contains_actual_trace": true,
+    "console_errors_or_warnings": [],
+    "mobile_viewport_width": 390,
+    "mobile_document_width": 375,
+    "horizontal_overflow": false
+  },
+  "backend_tests_cover": [
+    "11 scenario HTTP runs",
+    "document edit",
+    "same-origin and static whitelist",
+    "cancel",
+    "concurrency",
+    "observer isolation"
+  ],
+  "screenshots": [
+    "screenshots/desktop.png",
+    "screenshots/mobile.png"
+  ],
+  "limits": [
+    "loopback only",
+    "in-memory history capped at 20",
+    "2 concurrent tasks",
+    "cooperative stop, not immediate network cancellation",
+    "no multi-user deployment"
+  ],
+  "time_record": {
+    "backend_file_created_at": "2026-10-29T18:02:17.543016+08:00",
+    "verification_finished_at": "2026-10-29T18:13:49.220162+08:00",
+    "elapsed_minutes_since_backend_file_creation": 11.53,
+    "note": "File timestamp boundary excludes initial planning and later GitHub upload; includes browser and model/API waiting. Not candidate manual coding time."
+  }
+}

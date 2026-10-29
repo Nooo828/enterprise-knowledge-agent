@@ -28,7 +28,7 @@
 2. 非预期工具异常：OSError等会直接退出循环。现转为脱敏的ToolError观察交回决策器，不把异常原文写进Trace。
 3. 虚假冲突：同一片段重复引用两次也能满足数量检查。现要求实际观察到同规则的不同原文；相同证据不能据此报告冲突。
 
-修复前记录为../examples/audit/regressions-before-fix.txt；修复后42项pytest通过，日志为../examples/tests-final.txt。没有新增真实模型调用；已有11组真实模型结果经当前执行层逐项复核，另外11组历史离线材料也通过。
+修复前记录为../examples/audit/regressions-before-fix.txt；该次复查42项pytest通过，阶段记录见../examples/audit/audit-session.json；当前../examples/tests-final.txt已更新为后续网页版本的66项结果。该次本地复查没有新增真实模型调用；已有11组真实模型结果经当前执行层逐项复核，另外11组历史离线材料也通过。网页阶段另有真实模型验证，见09-web-interface.md。
 
 ## 可复制的本地检查
 

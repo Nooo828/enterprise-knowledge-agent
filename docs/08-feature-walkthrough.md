@@ -1,5 +1,7 @@
 # 逐项需求拆解与本地运行
 
+本教程保留CLI阶段的逐项核对和历史结果。后续新增可视化网页界面，当前完整测试为66项；启动与网页操作见09-web-interface.md。
+
 本轮按题意重新核对代码、已有真实模型记录，并实际执行了8条离线CLI演示。42项自动化测试通过；22组既有材料复核通过。本轮不调用模型API，不修改远程仓库。CLI演示结果见../examples/walkthrough/summary.json，真实模型历史结果见../examples/live/summary.json。
 
 ## 1. 题目的核心目标
@@ -15,7 +17,7 @@
 | 检索工具 | 接收模型检索词，返回命中ID、片段ID与摘要 | KnowledgeBase.search；中文双字、同义词、权重、同规则版本合并和分页 | 已实现；不是通用语义搜索 |
 | 原文读取工具 | 按检索定位读取可引用完整片段 | KnowledgeBase.read；读到的原文和日期进入实际观察 | 已实现 |
 | 动态模型决策 | 每次根据实际结果选择补检、读取、追问或停止 | LiveModel.decide；Agent.run每轮回传observations；normal/outside实际有补检 | 已实现；不是固定编排日志 |
-| 追问 | 冲突或问题不明确时给出需要补充的信息 | finish的conflict/needs_clarification与clarification；冲突案例实际追问适用主体/制度 | 已实现；不带交互聊天UI，等待用户下一次输入 |
+| 追问 | 冲突或问题不明确时给出需要补充的信息 | finish的conflict/needs_clarification与clarification；冲突案例实际追问适用主体/制度 | 已实现；CLI需传历史，追加网页支持继续追问 |
 | 有依据回答 | 最终事实来自已读原文，并有文档ID、版本和片段 | _finish核对quote完全等于本轮已读取片段；答案抽取生成 | 已实现；不等于自动保证语义相关性 |
 | 资料缺口与状态 | 区分缺资料、冲突、工具故障和超限 | status/gaps/clarification；not_found/tool_error/incomplete等 | 已实现 |
 | 冲突查证 | 读取双方，不凭日期选15天，不遗漏一方引用 | 同rule_key检查；缺读版本或强选单方会拒绝finish；conflict真实引用D01/D02 | 已实现于人工分组范围内 |
