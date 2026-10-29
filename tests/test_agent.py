@@ -127,3 +127,31 @@ def test_unread_search_page_cannot_be_ignored():
     run = Agent(KnowledgeBase(corpus),Scripted(actions),3).run({'question':'报销期限'})
     assert run['result']['status']=='incomplete'
     assert 'remaining search pages' in run['trace'][-1]['observation']['error']
+
+
+@pytest.mark.parametrize('fault,expected',[
+    ('search_once','answered'),('read_once','answered'),
+    ('search_always','tool_error'),('read_always','tool_error')])
+def test_all_supported_fault_modes(fault,expected):
+    case = make_cases()[0]
+    run = Agent(KnowledgeBase(case['corpus']),OfflineMock(),fault=fault).run({'question':case['question']})
+    assert run['result']['status']==expected
+    assert any(e['observation'].get('error') for e in run['trace'])
+
+
+def test_unexpected_tool_failure_is_observed_and_sanitized():
+    class UnavailableKB(KnowledgeBase):
+        def search(self,*args,**kwargs):
+            raise OSError('SENSITIVE_TOOL_SENTINEL')
+    run = Agent(UnavailableKB(make_cases()[0]['corpus']),OfflineMock()).run({'question':'报销期限'})
+    assert run['result']['status']=='tool_error'
+    assert 'SENSITIVE_TOOL_SENTINEL' not in json.dumps(run)
+
+
+def test_identical_evidence_cannot_be_claimed_as_conflict():
+    actions = [dict(action='read',doc_id='D01',chunk_id='deadline',reason='test'),
+        dict(action='finish',status='conflict',reason='test',gaps=['冲突'],clarification='哪份？',citations=[
+            dict(doc_id='D01',chunk_id='deadline',quote='报销申请须在费用发生后30天内提交。')]*2)]
+    run=Agent(KnowledgeBase(make_cases()[0]['corpus']),Scripted(actions),2).run({'question':'报销期限'})
+    assert run['result']['status']=='incomplete'
+    assert run['trace'][-1]['observation'].get('error')

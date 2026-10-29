@@ -1,6 +1,10 @@
 # 测试预期、实际结果与限制
 
-2026-10-29完成本轮验证。36项pytest测试通过，依赖检查无冲突，原始输出见examples/tests-final.txt和examples/dependencies-final.txt。测试包括六项必验收场景的离线回归、资料变更、伪造引用拒绝、缺读冲突版本拒绝、已知冲突强选单方拒绝、分页保护、模型错误脱敏和并行提议适配。
+2026-10-29初版36项pytest测试通过，本地复查补充6项回归测试后共42项通过，依赖检查无冲突，当前原始输出见examples/tests-final.txt和examples/dependencies-final.txt。测试包括六项必验收场景的离线回归、资料变更、伪造引用拒绝、缺读冲突版本拒绝、已知冲突强选单方拒绝、分页保护、模型错误脱敏和并行提议适配。
+
+本地复查还发现并修复三处实际缺陷：offline_mock在search_once恢复后误读历史失败记录；工具抛出OSError等非预期异常时未转为工具观察；重复引用同一原文可被误报为冲突。修复前的实际失败输出保存在examples/audit/regressions-before-fix.txt，修复后回归测试覆盖所有四种故障注入、异常脱敏与虚假冲突拒绝。未改变真实模型的动作选择逻辑。
+
+通过scripts/audit-local.py重新复核已有22组保存材料：资料SHA256、成功检索/读取返回与资料快照一致、引用确在本轮读取过、版本日期与原文一致、结束动作可被当前校验器接受、调用次数受限、文档本地链接有效。报告为examples/audit/evidence-audit.json；这是离线复核历史真实运行证据，不是重新执行22组真实API调用。examples/audit/decision-paths.md由原Trace生成，显式列出下一动作，方便核查至少两条动态路径。
 
 真实模型由用户提供的DeepSeek账号接入，模型名deepseek-flash。examples/live/summary.json的11组用例全部通过预设客观断言；examples/offline/summary.json同样11组通过，但仅验证流程。实时调用有随机性，复跑结果可能不同。测试通过不代表通用企业知识问答质量已被证明。
 

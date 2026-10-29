@@ -1,0 +1,62 @@
+F...FF                                                                   [100%]
+================================== FAILURES ===================================
+____________ test_all_supported_fault_modes[search_once-answered] _____________
+
+fault = 'search_once', expected = 'answered'
+
+    @pytest.mark.parametrize('fault,expected',[
+        ('search_once','answered'),('read_once','answered'),
+        ('search_always','tool_error'),('read_always','tool_error')])
+    def test_all_supported_fault_modes(fault,expected):
+        case = make_cases()[0]
+        run = Agent(KnowledgeBase(case['corpus']),OfflineMock(),fault=fault).run({'question':case['question']})
+>       assert run['result']['status']==expected
+E       AssertionError: assert 'incomplete' == 'answered'
+E         
+E         - answered
+E         + incomplete
+
+tests\test_agent.py:138: AssertionError
+___________ test_unexpected_tool_failure_is_observed_and_sanitized ____________
+
+    def test_unexpected_tool_failure_is_observed_and_sanitized():
+        class UnavailableKB(KnowledgeBase):
+            def search(self,*args,**kwargs):
+                raise OSError('SENSITIVE_TOOL_SENTINEL')
+>       run = Agent(UnavailableKB(make_cases()[0]['corpus']),OfflineMock()).run({'question':'报销期限'})
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_agent.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\xiaoying_agent\agent.py:88: in run
+    observation = self.kb.search(action.query, action.offset) if action.action=='search' else self.kb.read(action.doc_id, action.chunk_id)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_agent.test_unexpected_tool_failure_is_observed_and_sanitized.<locals>.UnavailableKB object at 0x000001960803FB30>
+args = ('报销期限', 0), kwargs = {}
+
+    def search(self,*args,**kwargs):
+>       raise OSError('SENSITIVE_TOOL_SENTINEL')
+E       OSError: SENSITIVE_TOOL_SENTINEL
+
+tests\test_agent.py:145: OSError
+____________ test_identical_evidence_cannot_be_claimed_as_conflict ____________
+
+    def test_identical_evidence_cannot_be_claimed_as_conflict():
+        actions = [dict(action='read',doc_id='D01',chunk_id='deadline',reason='test'),
+            dict(action='finish',status='conflict',reason='test',gaps=['冲突'],clarification='哪份？',citations=[
+                dict(doc_id='D01',chunk_id='deadline',quote='报销申请须在费用发生后30天内提交。')]*2)]
+        run=Agent(KnowledgeBase(make_cases()[0]['corpus']),Scripted(actions),2).run({'question':'报销期限'})
+>       assert run['result']['status']=='incomplete'
+E       AssertionError: assert 'conflict' == 'incomplete'
+E         
+E         - incomplete
+E         + conflict
+
+tests\test_agent.py:156: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_agent.py::test_all_supported_fault_modes[search_once-answered]
+FAILED tests/test_agent.py::test_unexpected_tool_failure_is_observed_and_sanitized
+FAILED tests/test_agent.py::test_identical_evidence_cannot_be_claimed_as_conflict
+3 failed, 3 passed, 21 deselected in 0.35s

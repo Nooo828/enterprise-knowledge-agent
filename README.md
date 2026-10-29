@@ -4,6 +4,8 @@
 
 交付题目：**企业知识问答 Agent**（原题未提供数字题号）。公开仓库：[Nooo828/xiaoying-ai-agent-campus-2027](https://github.com/Nooo828/xiaoying-ai-agent-campus-2027)，默认分支 main。最终 SHA 通过 `git rev-parse HEAD` 获取。
 
+当前为本地交付版本；企业知识问答实现及本轮检查修复尚未同步到远程仓库，按用户要求暂缓上传。最终提交前需补齐平台题号、人工复核，并确认远程 SHA 与本地一致。
+
 ## 评审先看这里
 
 - [验收结果与限制](docs/03-evaluation.md)：六项必验收场景及扩展检查。
@@ -11,7 +13,8 @@
 - [正常回答](examples/live/normal/output.json)、[冲突回答](examples/live/conflict/output.json)、[资料外问题](examples/live/outside/output.json)、[工具失败](examples/live/tool_failure/output.json)。每个目录含 input.json、corpus.json、output.json、trace.json。
 - [真实冲突 Trace](examples/live/conflict/trace.json)：模型检索、读取双方原文后选择 conflict 并追问；不以版本日期决定优先级。
 - [改文档测试](examples/live/mutated/output.json)：D01 从30天改为45天，答案随之改变。[冲突消除](examples/live/resolved/output.json)：两份同规则原文一致后可回答。
-- [测试日志](examples/tests-final.txt)：36 passed；[检索改进对比](examples/retrieval-evaluation.json)。
+- [测试日志](examples/tests-final.txt)：42 passed；[检索改进对比](examples/retrieval-evaluation.json)。
+- [本地合规核对表](docs/07-local-audit.md)、[真实决策路径摘录](examples/audit/decision-paths.md)、[22组材料自动复核](examples/audit/evidence-audit.json)。
 
 ## 安装与运行
 
@@ -44,6 +47,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -X utf8 -m src.xiaoying_agent.evaluate --mode live --out examples/live
 .\.venv\Scripts\python.exe -X utf8 scripts/retrieval-eval.py
 .\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe -X utf8 scripts/audit-local.py
 ```
 
 可通过 `--case conflict --case normal` 仅重跑指定用例。故障注入如 `--fault search_always`；`--max-steps 1` 验证上限。live 不会自动回退 Mock；离线模式显式标记 offline_mock，只证明流程，不证明模型决策质量。

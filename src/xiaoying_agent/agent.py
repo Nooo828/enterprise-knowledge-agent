@@ -35,6 +35,8 @@ class Agent:
                         raise ValueError('Read all discovered versions of cited rules before answering')
             relevant = [e for e in reads.values() if e['rule_key'] in keys]
             differing = conflicts(relevant)
+            if action.status=='conflict' and not differing:
+                raise ValueError('Conflict requires different observed texts for the same rule')
             if differing:
                 if action.status != 'conflict':
                     raise ValueError('Different texts for the same rule: report conflict, do not pick a version')
@@ -50,7 +52,8 @@ class Agent:
         if action.status=='not_found' and not any(e['action']['action']=='search' and
                 not e['observation'].get('error') for e in observations):
             raise ValueError('Cannot claim missing data before a successful search')
-        if action.status=='tool_error' and not any(e['observation'].get('error') for e in observations):
+        if action.status=='tool_error' and not any(e['action']['action'] in ('search','read') and
+                e['observation'].get('error') for e in observations):
             raise ValueError('Cannot claim tool failure without an observed error')
         prefix = {'answered':'根据已读取的资料：', 'conflict':'资料存在冲突，无法确定唯一答案：',
                   'not_found':'现有资料不足，无法回答。', 'tool_error':'工具失败，任务未完成。',
@@ -86,8 +89,16 @@ class Agent:
                         self.fault_used = True
                         raise ValueError('Injected tool outage')
                     observation = self.kb.search(action.query, action.offset) if action.action=='search' else self.kb.read(action.doc_id, action.chunk_id)
-            except ValueError as exc:
-                observation = dict(error=str(exc), retryable=action.action!='finish')
+            except Exception as exc:
+                # Only our fixed validation messages may reach the trace. Tool
+                # transports can put secrets in exception bodies; expose type only.
+                public_tool_errors = {'Search query must contain 1..500 characters',
+                                      'Document fragment not found', 'Injected tool outage'}
+                if isinstance(exc, ValueError) and (action.action=='finish' or str(exc) in public_tool_errors):
+                    error = str(exc)
+                else:
+                    error = f'ToolError:{type(exc).__name__}'
+                observation = dict(error=error, retryable=action.action!='finish')
             observations.append(dict(step=step, action=action.model_dump(), observation=observation))
             if result is not None:
                 break

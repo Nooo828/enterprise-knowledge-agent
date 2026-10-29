@@ -1,0 +1,9 @@
+{
+  "scope": "Local compliance audit, reproduction and fixes; no model API or GitHub calls.",
+  "reproduced_regressions_recorded_at": "2026-10-29T16:16:43.774235+08:00",
+  "audit_finished_at": "2026-10-29T16:26:54.998890+08:00",
+  "minutes_since_regressions_recorded": 10.19,
+  "note": "This measured interval excludes the initial read-only inspection; it is not candidate manual coding time.",
+  "final_pytest_passed": 42,
+  "saved_runs_revalidated": 22
+}

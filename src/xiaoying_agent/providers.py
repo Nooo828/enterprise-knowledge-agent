@@ -77,7 +77,7 @@ class OfflineMock:
                 return Action.model_validate(last['action'])
             return Action(action='finish', status='tool_error', gaps=['工具持续不可用，证据未能完整取得。'],
                           reason='两次工具失败，停止并报告未完成。')
-        searches = [e['observation'] for e in events if e['action']['action']=='search']
+        searches = [e['observation'] for e in events if e['action']['action']=='search' and not e['observation'].get('error')]
         for search in searches:
             if search['next_offset'] is not None and not any(s['query']==search['query'] and
                     s['offset']==search['next_offset'] for s in searches):

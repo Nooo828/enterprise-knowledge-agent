@@ -1,0 +1,237 @@
+{
+  "checked_at": "2026-10-29T16:27:08.567573+08:00",
+  "network_calls": false,
+  "live_evidence_policy": "Validate existing saved live records; no new live inference.",
+  "required_files": {
+    "README.md": true,
+    "requirements.txt": true,
+    ".env.example": true,
+    ".gitignore": true,
+    "docs/01-requirements.md": true,
+    "docs/02-solution.md": true,
+    "docs/03-evaluation.md": true,
+    "docs/04-ai-usage.md": true,
+    "docs/05-retrospective.md": true,
+    "src/": true,
+    "tests/": true,
+    "examples/": true,
+    "data/": true,
+    "docs/": true
+  },
+  "evidence": [
+    {
+      "mode": "live",
+      "case": "normal",
+      "status": "answered",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "conflict",
+      "status": "conflict",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "outside",
+      "status": "not_found",
+      "steps": 3,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "paraphrase",
+      "status": "answered",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "context",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "tool_failure",
+      "status": "tool_error",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "tool_recovery",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "mutated",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "resolved",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "product",
+      "status": "answered",
+      "steps": 3,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "live",
+      "case": "step_limit",
+      "status": "incomplete",
+      "steps": 1,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "normal",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "conflict",
+      "status": "conflict",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "outside",
+      "status": "not_found",
+      "steps": 3,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "paraphrase",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "context",
+      "status": "answered",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "tool_failure",
+      "status": "tool_error",
+      "steps": 3,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "tool_recovery",
+      "status": "answered",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "mutated",
+      "status": "answered",
+      "steps": 4,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "resolved",
+      "status": "answered",
+      "steps": 5,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "product",
+      "status": "answered",
+      "steps": 3,
+      "citations_read_and_exact": true,
+      "passed": true
+    },
+    {
+      "mode": "offline",
+      "case": "step_limit",
+      "status": "incomplete",
+      "steps": 1,
+      "citations_read_and_exact": true,
+      "passed": true
+    }
+  ],
+  "links": {
+    "README.md -> docs/03-evaluation.md": true,
+    "README.md -> examples/live/summary.json": true,
+    "README.md -> examples/live/normal/output.json": true,
+    "README.md -> examples/live/conflict/output.json": true,
+    "README.md -> examples/live/outside/output.json": true,
+    "README.md -> examples/live/tool_failure/output.json": true,
+    "README.md -> examples/live/conflict/trace.json": true,
+    "README.md -> examples/live/mutated/output.json": true,
+    "README.md -> examples/live/resolved/output.json": true,
+    "README.md -> examples/tests-final.txt": true,
+    "README.md -> examples/retrieval-evaluation.json": true,
+    "README.md -> docs/07-local-audit.md": true,
+    "README.md -> examples/audit/decision-paths.md": true,
+    "README.md -> examples/audit/evidence-audit.json": true
+  },
+  "pending": [
+    "数字题号未提供",
+    "候选人亲自复核与个人学习陈述",
+    "GitHub同步按用户要求暂缓"
+  ],
+  "source_sha256": {
+    "src\\__init__.py": "450ea8578acd2cbc0fb9aae554188f7cf607c47402c7a88bace2a7fffa21a573",
+    "src\\xiaoying_agent\\agent.py": "30579a17c817426515dfd19fefeccb15a725b17082999317739b34d2799bb6b3",
+    "src\\xiaoying_agent\\cli.py": "92e4e9f9c9505059706c44087e345c8ad13a25242a94c49c87de869fd9454767",
+    "src\\xiaoying_agent\\evaluate.py": "334a8b82302ec26099262d65185dbbd0d8d0dda7516fa6dfa5d615c2497795dc",
+    "src\\xiaoying_agent\\knowledge.py": "b8cf67050713756c85d50f6c95aace667975945f26915b3c41e672294b651958",
+    "src\\xiaoying_agent\\providers.py": "6d9a557b8df577b2a9122ab1b0b3dee8cccf3959284639b890e17303bd57a402",
+    "src\\xiaoying_agent\\schemas.py": "fc7ae4571ef61ed874fb36c17990653c26ccedd621befdf0f6a2e50e52e23993",
+    "src\\xiaoying_agent\\__init__.py": "6f3fae1a58c9317c5b63fd95ec6ff66299d5c6d8f22c57c8f3f282850e91a4b5",
+    "src\\xiaoying_agent\\__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "tests\\test_agent.py": "b1a6e78a03a0270f537eeadd7056620e0fbdfa7478ca6d38e23dfb981256ec29",
+    "tests\\test_retrieval.py": "60ad896cc8973d0d6816240446d5de53da7254c3167a1c4c4796959186a20ebb",
+    "tests\\test_smoke.py": "dbc37bb8f7103e44fbfec96b21a8dae391d1c794b461794195e84d0f4c902ccb"
+  },
+  "local_only_paths_tracked": [],
+  "credential_pattern_file_matches": [],
+  "all_passed": true
+}
